@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct tornadoApp: App {
@@ -13,5 +14,6 @@ struct tornadoApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [Message.self, ChatRoom.self])
     }
 }

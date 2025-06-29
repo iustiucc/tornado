@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ChatView: View {
+    
+    @State private var messageText = ""
+
     var body: some View {
         
         VStack(spacing: 0){
@@ -17,7 +20,7 @@ struct ChatView: View {
                 
                 Button(action: {}) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.accentColor)
+                        .foregroundStyle(Color("AccentColor"))
                 }
                 .padding()
                 
@@ -26,25 +29,45 @@ struct ChatView: View {
                 
                 Text("tornado")
                     .font(.headline)
+                    .foregroundStyle(Color("Text"))
                 
                 Spacer()
                 
                 Button(action: {}) {
                     Image(systemName: "plus.bubble")
-                        .foregroundColor(.accentColor)
+                        .foregroundStyle(Color("AccentColor"))
                 }
                 .padding()
             }
+            .background(Color("BackgroundDark"))
             
             ScrollView {
                 
             }
+            .background(Color("BackgroundDark"))
             
             // Footer
             HStack {
                 
+                Button(action: {}) {
+                    Image(systemName: "plus")
+                        .padding()
+                        .foregroundStyle(Color("AccentColor"))
+                }
+                
+                TextField("Type a message...", text: $messageText)
+                    .padding()
+                    .foregroundStyle(Color("Text"))
+                
+                Button(action: {}) {
+                    Image(systemName: "microphone")
+                        .imageScale(.large)
+                        .padding()
+                        .foregroundStyle(Color("AccentColor"))
+                }
+                
             }
-            
+            .background(Color("BackgroundLight"))
         }
     }
 }

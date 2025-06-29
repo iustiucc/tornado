@@ -18,7 +18,7 @@ struct ListView: View {
                 
                 Button(action: {}) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.accentColor)
+                        .foregroundStyle(Color("AccentColor"))
                 }
                 .padding()
                 
@@ -27,36 +27,41 @@ struct ListView: View {
                 
                 Text("Market Name")
                     .font(.headline)
+                    .foregroundStyle(Color("Text"))
                 
                 Spacer()
                 
                 Button(action: {}) {
                     Image(systemName: "plus")
-                        .foregroundColor(.accentColor)
+                        .foregroundStyle(Color("AccentColor"))
                 }
                 .padding()
             }
-            
-            Spacer()
+            .background(Color("BackgroundDark"))
             
             ScrollView {
                 
                 // Content
                 }
-            
-            Spacer()
+            .background(Color("BackgroundDark"))
             
             // Footer
             
-            HStack {
+            HStack(spacing: 0) {
+                
+                Spacer()
                 
                 Text("Total: ")
                     .font(.headline)
                     .foregroundColor(.accentColor)
-                
+
                 Text("1000 lei")
-                    
+                    .foregroundStyle(Color("Text"))
+                
+                Spacer()
             }
+            .padding()
+            .background(Color("BackgroundDark"))
         }
     }
 }

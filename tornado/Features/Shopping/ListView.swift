@@ -37,13 +37,11 @@ struct ListView: View {
                 }
                 .padding()
             }
-            .background(Color("BackgroundDark"))
             
             ScrollView {
                 
                 // Content
                 }
-            .background(Color("BackgroundDark"))
             
             // Footer
             
@@ -53,7 +51,7 @@ struct ListView: View {
                 
                 Text("Total: ")
                     .font(.headline)
-                    .foregroundColor(.accentColor)
+                    .foregroundStyle(Color("AccentColor"))
 
                 Text("1000 lei")
                     .foregroundStyle(Color("Text"))
@@ -61,8 +59,8 @@ struct ListView: View {
                 Spacer()
             }
             .padding()
-            .background(Color("BackgroundDark"))
         }
+        .background(Color("BackgroundDark"))
     }
 }
 

@@ -1,8 +1,6 @@
 //
-//  ChatView.swift
+//  ChatView.swift - Zona de input îmbunătățită
 //  tornado
-//
-//  Created by Ionuț-Daniel Iuștiuc on 27.06.2025.
 //
 
 import SwiftUI
@@ -10,6 +8,7 @@ import SwiftUI
 struct ChatView: View {
     
     @State private var messageText = ""
+    @FocusState private var isTextFieldFocused: Bool
 
     var body: some View {
         
@@ -39,36 +38,52 @@ struct ChatView: View {
                 }
                 .padding()
             }
-            .background(Color("BackgroundDark"))
             
             ScrollView {
                 
             }
-            .background(Color("BackgroundDark"))
-            
+        }
+        .safeAreaInset(edge: .bottom) {
             // Footer
             HStack {
                 
-                Button(action: {}) {
+                Button(action: {
+                    // Action
+                }) {
                     Image(systemName: "plus")
-                        .padding()
                         .foregroundStyle(Color("AccentColor"))
                 }
+                .padding()
                 
-                TextField("Type a message...", text: $messageText)
-                    .padding()
+                TextField("Type a message...", text: $messageText, axis: .vertical)
+                    .focused($isTextFieldFocused)
+                    .lineLimit(1...4)
                     .foregroundStyle(Color("Text"))
+                    .background(.clear)
+                    .padding()
+                    .onSubmit {
+                        // sendMessage()
+                    }
                 
-                Button(action: {}) {
-                    Image(systemName: "microphone")
+                // Send/Voice button
+                Button(action: {
+                    if !messageText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        // sendMessage()
+                    } else {
+                        // startVoiceRecording()
+                    }
+                }) {
+                    Image(systemName: messageText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "microphone" : "paperplane")
+                        .foregroundStyle(Color("AccentColor"))
                         .imageScale(.large)
                         .padding()
-                        .foregroundStyle(Color("AccentColor"))
                 }
                 
             }
             .background(Color("BackgroundLight"))
+            .clipShape(RoundedRectangle(cornerRadius: 25))
         }
+        .background(Color("BackgroundDark"))
     }
 }
 
